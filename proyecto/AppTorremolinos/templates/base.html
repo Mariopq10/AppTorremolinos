@@ -55,8 +55,10 @@
         }
 
         .content {
-            margin-left: 250px;
+
             padding: 20px;
+            margin-left: 175px;
+            margin-bottom:50px;
         }
 
         .footer {
@@ -69,7 +71,7 @@
             bottom: 0;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 720px) {
             .content {
                 margin-left: 0; /* Si la pantalla es lo suficientemente pequeña, elimina el margen izquierdo */
             }
@@ -79,31 +81,35 @@
 </head>
 
 <body>
-    <div class="sidebar">
-        <h3 class="sidebar-title"> Torremolinos </h3>
-        <ul class="sidebar-menu">
+    <div class="sidebar bg-dark">
+        <h3 class="sidebar-title text-white text-center"> Torremolinos </h3>
+        <ul class="list-unstyled sidebar-menu">
             <li class="sidebar-menu-item">
-                <a class="sidebar-menu-link" href="{% url 'AppTorremolinos:PaginaInicio' %}">Inicio</a>
+                <a class="sidebar-menu-link text-white" href="{% url 'AppTorremolinos:PaginaInicio' %}">Inicio</a>
             </li>
             <li class="sidebar-menu-item">
-                <a class="sidebar-menu-link" href="{% url 'AppTorremolinos:listado_deportes' %}">Deportes</a>
+                <a class="sidebar-menu-link text-white" href="{% url 'AppTorremolinos:listado_deportes' %}">Deportes</a>
             </li>
             <li class="sidebar-menu-item">
-                <a class="sidebar-menu-link" href="{% url 'AppTorremolinos:listado_instalaciones' %}">Instalaciones</a>
+                <a class="sidebar-menu-link text-white" href="{% url 'AppTorremolinos:listado_instalaciones' %}">Instalaciones</a>
             </li>
             <li class="sidebar-menu-item">
-                <a class="sidebar-menu-link" href="{% url 'AppTorremolinos:listado_equipos' %}">Equipos</a>
+                <a class="sidebar-menu-link text-white" href="{% url 'AppTorremolinos:listado_equipos' %}">Equipos</a>
             </li>
             <li class="sidebar-menu-item">
-                <a class="sidebar-menu-link" href="{% url 'AppTorremolinos:listado_jugadores' %}">Jugadores</a>
+                <a class="sidebar-menu-link text-white" href="{% url 'AppTorremolinos:listado_jugadores' %}">Jugadores</a>
             </li>
             <li class="sidebar-menu-item">
-                <a class="sidebar-menu-link" href="{% url 'AppTorremolinos:listado_partidos' %}">Partidos</a>
+                <a class="sidebar-menu-link text-white" href="{% url 'AppTorremolinos:listado_partidos' %}">Partidos</a>
             </li>
         </ul>
     </div>
-
+    
     <div class="content">
+        <div class="container">
+            <div class="jumbotron text-center">
+                <h1 class="display-5">AppTorremolinos</h1>
+            </div>
         {% block cuerpo %}{% endblock %}
     </div>
 

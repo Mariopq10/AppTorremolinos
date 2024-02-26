@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block titulo %} App Torremolinos {% endblock %}
+{% block cuerpo %}
+{% load static %}
+
+
+
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Equipo</th>
+                <th scope="col">Deporte</th>
+                <th scope="col">Equipación Principal</th>
+                <th scope="col">Equipación Suplente</th>
+                <th scope="col">Contacto</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Correo Electrónico</th>
+                <th scope="col" colspan="2">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{equipo.id_equipo}}</td>
+                <td>{{equipo.nombre}}</td>
+                <td>{{equipo.id_deporte.nombre}}</td>
+                <td>{{equipo.equipacion_principal}}</td>
+                <td>{{equipo.equipacion_suplente}}</td>
+                <td>{{equipo.contacto}}</td>
+                <td>{{equipo.telefono}}</td>
+                <td>{{equipo.email}}</td>  
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <a class="btn btn-primary mb-3" href="{% url 'AppTorremolinos:crear_equipo' %}"> Añadir Nuevo Jugador </a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Dorsal</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col" colspan="2">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for jugador in jugadores  %}
+            <tr>
+                <td>{{ jugador.dorsal }}</td>
+                <td>{{ jugador.nombre }}</td>
+                <td>{{ jugador.apellido1 }} {% if jugador.apellido2 %}{{jugador.apellido2}}{% else %} {% endif %}</td>
+                <td></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock %}

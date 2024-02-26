@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block titulo %} App Torremolinos {% endblock %}
+{% block cuerpo %}
+{% load static %}
+
+
+
+<div class="container">
+    <a class="btn btn-primary mb-3" href="{% url 'AppTorremolinos:crear_equipo' %}"> Añadir Equipo </a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                
+                <th scope="col">Equipo</th>
+                <th scope="col">Deporte</th>
+                <th scope="col">Contacto</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Email</th>
+                <th scope="col" colspan="2">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Inicio del bucle for -->
+            {% for equipo in listado_equipos %}
+            <tr>
+                
+                <td>{{equipo.nombre}}</td>
+                <td>{{equipo.id_deporte.nombre}}</td>
+                
+                <td>{{equipo.contacto}}</td>
+                <td>{{equipo.telefono}}</td>
+                <td>{{equipo.email}}</td>  
+                <td><a class="btn btn-warning" href="{% url 'AppTorremolinos:actualizar_equipo' pk=equipo.id_equipo %}">Actualizar</a></td>
+                <td><a class="btn btn-info" href="{% url 'AppTorremolinos:detalle_equipo' equipo.pk %}">Detalle</a></td>
+                <td><a class="btn btn-danger" href="{% url 'AppTorremolinos:borrar_equipo' pk=equipo.id_equipo %}">Borrar</a></td>
+            </tr>
+            <!-- Fin del bucle for -->
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+{% endblock %}

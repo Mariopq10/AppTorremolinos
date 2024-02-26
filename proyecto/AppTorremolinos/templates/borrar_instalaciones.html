@@ -4,14 +4,15 @@
 <!-- Inicio del cuerpp -->
 {% block cuerpo %}
 
+
+{% comment %} TODO  checkbox {% endcomment %}
 <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="Submit" value="Actualizar" />
-    <a href="{% url 'AppTorremolinos:listado_deportes' %}"><input
+    <p>¿Desea eliminar esta instalacion : '{{ object.nombre }}'?</p>
+    <input type="Submit" value="Borrar" />
+    <a href="{% url 'AppTorremolinos:listado_instalaciones' %}"><input
     type="button" value="Cancelar"></a>
     </form>
-
 
 <!-- Fin cuerpo -->
 {% endblock %}

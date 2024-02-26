@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
+
+from .forms import DeporteForm, EquipoForm, InstalacionForm, JugadorForm, PartidoForm
 from . import models
 from django.views import generic
 from django.utils import timezone
@@ -33,20 +35,20 @@ class DeporteListView(generic.ListView):
     
 class DeporteCreateView(generic.CreateView):
     model = models.Deporte
-    # form_class = DeporteForm
+    form_class = DeporteForm
     template_name = 'crear_deporte.html'
-    success_url = reverse_lazy('AppTorremolinos:listado_deportes.html') 
+    success_url = reverse_lazy('AppTorremolinos:listado_deportes') 
 
 class DeporteDeleteView(generic.DeleteView):
     model = models.Deporte
     template_name = 'borrar_deporte.html'
-    success_url = reverse_lazy('AppTorremolinos:listado_deportes.html') 
+    success_url = reverse_lazy('AppTorremolinos:listado_deportes') 
 
 class DeporteUpdateView(generic.UpdateView):
     model = models.Deporte
-    # form_class = DeporteForm
+    form_class = DeporteForm
     template_name = 'actualizar_deporte.html'
-    success_url = reverse_lazy('AppTorremolinos:listado_deportes.html') 
+    success_url = reverse_lazy('AppTorremolinos:listado_deportes') 
 
 
 # Vistas modelo Instalacion.
@@ -59,20 +61,19 @@ class InstalacionesListView(generic.ListView):
 
 class InstalacionesCreateView(generic.CreateView):
     model = models.Instalacion
-    # form_class = InstalacionForm
-    template_name = 'instalaciones_create.html'
-    # success_url = reverse_lazy('torre_crud:instalaciones-list')
+    form_class = InstalacionForm
+    template_name = 'crear_instalaciones.html'
+    success_url = reverse_lazy('AppTorremolinos:listado_instalaciones')
 
 class InstalacionesDeleteView(generic.DeleteView):
     model = models.Instalacion
-    template_name = 'instalaciones_delete.html'
-    # success_url = reverse_lazy('torre_crud:instalaciones-list')
-
+    template_name = 'borrar_instalaciones.html'
+    success_url = reverse_lazy('AppTorremolinos:listado_instalaciones')
 class InstalacionesUpdateView(generic.UpdateView):
     model = models.Instalacion
-    # form_class = InstalacionForm
-    template_name = 'instalaciones_update.html'
-    # success_url = reverse_lazy('torre_crud:instalaciones-list')
+    form_class = InstalacionForm
+    template_name = 'actualizar_instalaciones.html'
+    success_url = reverse_lazy('AppTorremolinos:listado_instalaciones')
 
 
 # Vistas del modelo Equipo.
@@ -86,25 +87,25 @@ class EquipoListView(generic.ListView):
 
 class EquipoCreateView(generic.CreateView):
     model = models.Equipo
-    # form_class = EquipoForm
-    template_name = 'equipo_create.html'
-    # success_url = reverse_lazy('torre_crud:equipos-list')
+    form_class = EquipoForm
+    template_name = 'crear_equipo.html'
+    success_url = reverse_lazy('AppTorremolinos:listado_equipos')
 
 class EquipoDeleteView(generic.DeleteView):
     model = models.Equipo
-    template_name = 'equipo_confirm_delete.html'
-    # success_url = reverse_lazy('torre_crud:equipos-list')
+    template_name = 'borrar_equipo.html'
+    success_url = reverse_lazy('AppTorremolinos:listado_equipos')
 
 class EquipoUpdateView(generic.UpdateView):
     model = models.Equipo
-    # form_class = EquipoForm
-    template_name = 'equipo_update.html'
-    # success_url = reverse_lazy('torre_crud:equipos-list')
+    form_class = EquipoForm
+    template_name = 'actualizar_equipo.html'
+    success_url = reverse_lazy('AppTorremolinos:listado_equipos')
 
 class EquipoDetailView(generic.DetailView):
     model = models.Equipo
     template_name = 'detalle_equipo.html'
-    context_object_name = 'detalle_equipo'
+    context_object_name = 'equipo'
 
     def get_queryset(self):
         return super().get_queryset()
@@ -119,9 +120,9 @@ class EquipoDetailView(generic.DetailView):
 
 class EquipoJugadorCreate(generic.CreateView):
     model = models.Jugador
-    # form_class = JugadorForm
-    template_name = 'equipo_jugador_create.html'
-    # success_url = reverse_lazy('torre_crud:equipos-list') 
+    form_class = JugadorForm
+    template_name = 'crear_jugador_equipo.html'
+    success_url = reverse_lazy('AppTorremolinos:listado_equipos') 
 
     def get_initial(self):
         initial = super().get_initial()
@@ -140,15 +141,15 @@ class JugadorListView(generic.ListView):
 
 class JugadorCreateView(generic.CreateView):
     model = models.Jugador
-    # form_class = JugadorForm
-    # success_url = reverse_lazy('torre_crud:jugadores-list') 
-    template_name = 'jugador_create.html'
+    form_class = JugadorForm
+    success_url = reverse_lazy('AppTorremolinos:listado_jugadores') 
+    template_name = 'crear_jugador.html'
 
 class JugadorUpdateView(generic.UpdateView):
     model = models.Jugador
-    # form_class = JugadorForm
-    # success_url = reverse_lazy('torre_crud:jugadores-list') 
-    template_name = 'jugador_update.html'
+    form_class = JugadorForm
+    success_url = reverse_lazy('AppTorremolinos:listado_jugadores')  
+    template_name = 'actualizar_jugador.html'
 
 class JugadorDetailView(generic.DetailView):
     model = models.Jugador
@@ -163,8 +164,8 @@ class JugadorDetailView(generic.DetailView):
 
 class JugadorDeleteView(generic.DeleteView):
     model = models.Jugador
-    # success_url = reverse_lazy('torre_crud:jugadores-list')  
-    template_name = 'jugador_confirm_delete.html'
+    success_url = reverse_lazy('AppTorremolinos:listado_jugadores')  
+    template_name = 'borrar_jugador.html'
 
 
 # Vistas del modelo Partido.
