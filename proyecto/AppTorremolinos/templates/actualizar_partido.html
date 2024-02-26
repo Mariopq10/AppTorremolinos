@@ -1,15 +1,55 @@
 {% extends "base.html" %}
 {% block titulo %} AppTorremolinos {% endblock %}
 
-<!-- Inicio del cuerpp -->
+<!-- Inicio del cuerpo -->
 {% block cuerpo %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="Submit" value="Actualizar" />
-    <a href="{% url 'AppTorremolinos:listado_partidos' %}"><input
-    type="button" value="Cancelar"></a>
-    </form>
-<!-- Fin cuerpo -->
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            Actualizar Partido
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.id_deporte.label_tag }}
+                    {{ form.id_deporte }}
+                </div>
+                <div class="form-group">
+                    {{ form.fecha_hora.label_tag }}
+                    {{ form.fecha_hora }}
+                </div>
+                <div class="form-group">
+                    {{ form.id_instalacion.label_tag }}
+                    {{ form.id_instalacion }}
+                </div>
+                <div class="form-group">
+                    {{ form.id_local.label_tag }}
+                    {{ form.id_local }}
+                </div>
+                <div class="form-group">
+                    {{ form.id_visitante.label_tag }}
+                    {{ form.id_visitante }}
+                </div>
+                <div class="form-group">
+                    {{ form.puntos_local.label_tag }}
+                    {{ form.puntos_local }}
+                </div>
+                <div class="form-group">
+                    {{ form.puntos_visitante.label_tag }}
+                    {{ form.puntos_visitante }}
+                </div>
+                <div class="form-group">
+                    {{ form.observaciones.label_tag }}
+                    {{ form.observaciones }}
+                </div>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <a href="{% url 'AppTorremolinos:listado_partidos' %}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Fin del cuerpo -->
 {% endblock %}

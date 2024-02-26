@@ -4,13 +4,24 @@
 <!-- Inicio del cuerpp -->
 {% block cuerpo %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="Submit" value="Actualizar" />
-    <a href="{% url 'AppTorremolinos:listado_deportes' %}"><input
-    type="button" value="Cancelar"></a>
-    </form>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            Actualizar Deporte
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_nombre">Deporte:</label>
+                    {{ form.nombre }}
+                </div>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <a href="{% url 'AppTorremolinos:listado_deportes' %}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 <!-- Fin cuerpo -->

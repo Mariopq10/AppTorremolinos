@@ -5,7 +5,7 @@
 
 
 
-<div class="container">
+{% comment %} <div class="container">
     <a class="btn btn-primary mb-3" href="{% url 'AppTorremolinos:crear_instalaciones' %}"> Añadir Instalación </a>
     <table class="table table-striped">
         <thead>
@@ -34,7 +34,54 @@
             {% endfor %}
         </tbody>
     </table>
+</div> {% endcomment %}
+
+<div class="container">
+    <a class="btn btn-primary mb-3" href="{% url 'AppTorremolinos:crear_instalaciones' %}"> Añadir Instalación </a>
+
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            Lista de Instalaciones
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Instalación</th>
+                            <th scope="col">Dirección</th>
+                            <th scope="col">Iluminación</th>
+                            <th scope="col">Cubierta</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Inicio del bucle for -->
+                        {% for instalacion in listado_instalaciones %}
+                        <tr>
+                            <td>{{instalacion.id_instalacion}}</td>
+                            <td>{{instalacion.nombre}}</td>
+                            <td>{{instalacion.direccion}}</td>
+                            <td>{% if instalacion.iluminacion %}Sí{% else %}No{% endif %}</td>
+                            <td>{% if instalacion.cubierta %}Sí{% else %}No{% endif %}</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Acciones">
+                                    <a class="btn btn-warning" href="{% url 'AppTorremolinos:actualizar_instalaciones' pk=instalacion.id_instalacion %}">Actualizar</a>
+                                    <a class="btn btn-danger" href="{% url 'AppTorremolinos:borrar_instalaciones' pk=instalacion.id_instalacion %}">Borrar</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Fin del bucle for -->
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
+<br>
+    <a class="btn btn-primary mb-3" href="{% url 'AppTorremolinos:crear_instalaciones' %}"> Añadir Instalación </a>
 
 
 

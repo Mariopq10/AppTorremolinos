@@ -4,13 +4,55 @@
 <!-- Inicio del cuerpp -->
 {% block cuerpo %}
 
-<form method="POST">
+{% comment %} <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="Submit" value="Actualizar" />
     <a href="{% url 'AppTorremolinos:listado_equipos' %}"><input
     type="button" value="Cancelar"></a>
-    </form>
+    </form> {% endcomment %}
 
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            Actualizar Equipo
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Nombre:</label>
+                    {{ form.nombre }}
+                </div>
+                <div class="form-group">
+                    <label>Deporte:</label>
+                    {{ form.id_deporte }}
+                </div>
+                <div class="form-group">
+                    <label>Equipación Principal:</label>
+                    {{ form.equipacion_principal }}
+                </div>
+                <div class="form-group">
+                    <label >Equipación Suplente:</label>
+                    {{ form.equipacion_suplente }}
+                </div>
+                <div class="form-group">
+                    <label >Contacto:</label>
+                    {{ form.contacto }}
+                </div>
+                <div class="form-group">
+                    <label>Teléfono:</label>
+                    {{ form.telefono }}
+                </div>
+                <div class="form-group">
+                    <label>Correo Electrónico:</label>
+                    {{ form.email }}
+                </div>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <a href="{% url 'AppTorremolinos:listado_equipos' %}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
 <!-- Fin cuerpo -->
 {% endblock %}

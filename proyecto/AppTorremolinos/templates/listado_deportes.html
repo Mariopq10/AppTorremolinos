@@ -7,29 +7,44 @@
 
 <div class="container">
     <a class="btn btn-primary mb-3" href="{% url 'AppTorremolinos:crear_deporte' %}"> Añadir Deporte </a>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Deporte</th>
-                <th scope="col" colspan="2">Opciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Inicio del bucle for -->
-            {% for deporte in listado_deportes %}
-            <tr>
-                <td>{{deporte.id_deporte}}</td>
-                <td>{{deporte.nombre}}</td>
-                <td><a class="btn btn-warning" href="{% url 'AppTorremolinos:actualizar_deporte' pk=deporte.id_deporte %}">Actualizar</a></td>
-                <td><a class="btn btn-danger" href="{% url 'AppTorremolinos:borrar_deporte' pk=deporte.id_deporte %}">Borrar</a></td>
-            </tr>
-            <!-- Fin del bucle for -->
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
 
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            Lista de Deportes
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Deporte</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Inicio del bucle for -->
+                        {% for deporte in listado_deportes %}
+                        <tr>
+                            <td>{{deporte.id_deporte}}</td>
+                            <td>{{deporte.nombre}}</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Acciones">
+                                    <a class="btn btn-warning" href="{% url 'AppTorremolinos:actualizar_deporte' pk=deporte.id_deporte %}">Actualizar</a>
+                                    <a class="btn btn-danger" href="{% url 'AppTorremolinos:borrar_deporte' pk=deporte.id_deporte %}">Borrar</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Fin del bucle for -->
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<a class="btn btn-primary mb-3" href="{% url 'AppTorremolinos:crear_deporte' %}"> Añadir Deporte </a>
 
 
 

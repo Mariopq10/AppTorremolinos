@@ -11,5 +11,57 @@
     <a href="{% url 'AppTorremolinos:listado_jugadores' %}"><input
     type="button" value="Cancelar"></a>
     </form>
+
+
+    {% comment %} <div class="container mt-5">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                Actualizar Jugador
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form.nombre.label_tag }}
+                        {{ form.nombre }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.apellido1.label_tag }}
+                        {{ form.apellido1 }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.apellido2.label_tag }}
+                        {{ form.apellido2 }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.equipo.label_tag }}
+                        {{ form.equipo }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.dorsal.label_tag }}
+                        {{ form.dorsal }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.fecha_nacimiento.label_tag }}
+                        {{ form.fecha_nacimiento }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.altura.label_tag }}
+                        {{ form.altura }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.peso.label_tag }}
+                        {{ form.peso }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.telefono.label_tag }}
+                        {{ form.telefono }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <a href="{% url 'AppTorremolinos:listado_jugadores' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div> {% endcomment %}
 <!-- Fin cuerpo -->
 {% endblock %}
