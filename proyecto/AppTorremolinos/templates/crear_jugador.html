@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block titulo %} AppTorremolinos {% endblock %}
+
+<!-- Inicio del cuerpp -->
+{% block cuerpo %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="Submit" value="Aceptar" />
+    </form>
+    
+<!-- Fin cuerpo -->
+{% endblock %}

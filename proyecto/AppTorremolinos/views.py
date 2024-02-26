@@ -144,6 +144,7 @@ class JugadorCreateView(generic.CreateView):
     form_class = JugadorForm
     success_url = reverse_lazy('AppTorremolinos:listado_jugadores') 
     template_name = 'crear_jugador.html'
+    
 
 class JugadorUpdateView(generic.UpdateView):
     model = models.Jugador
@@ -171,28 +172,28 @@ class JugadorDeleteView(generic.DeleteView):
 # Vistas del modelo Partido.
 class PartidoListView(generic.ListView):
     model = models.Partido
-    template_name = 'partido_list.html'
+    template_name = 'listado_partidos.html'
     context_object_name = 'partidos'
     ordering = ['-fecha_hora']
 
 class PartidoCreateView(generic.CreateView):
     model = models.Partido
-    # form_class = PartidoForm
-    # success_url = reverse_lazy('torre_crud:partidos-list') 
-    template_name = 'partido_create.html'
+    form_class = PartidoForm
+    success_url = reverse_lazy('AppTorremolinos:listado_partidos') 
+    template_name = 'crear_partido.html'
 
 class PartidoUpdateView(generic.UpdateView):
     model = models.Partido
-    # form_class = PartidoForm
-    # success_url = reverse_lazy('torre_crud:partidos-list') 
-    template_name = 'partido_update.html'
+    form_class = PartidoForm
+    success_url = reverse_lazy('AppTorremolinos:listado_partidos') 
+    template_name = 'actualizar_partido.html'
 
 class PartidoDetailView(generic.DetailView):
     model = models.Partido
-    template_name = 'partido_detail.html'
+    template_name = 'detalle_partido.html'
     context_object_name = 'partido'
 
 class PartidoDeleteView(generic.DeleteView):
     model = models.Partido
-    # success_url = reverse_lazy('torre_crud:partidos-list')
-    template_name = 'partido_confirm_delete.html'
+    success_url = reverse_lazy('AppTorremolinos:listado_partidos') 
+    template_name = 'borrar_partido.html'

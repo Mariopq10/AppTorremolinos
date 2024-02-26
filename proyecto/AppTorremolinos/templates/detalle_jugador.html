@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block titulo %} App Torremolinos {% endblock %}
+{% block cuerpo %}
+{% load static %}
+
+
+
+
+
+{% comment %} <div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Primer Apellido</th>
+                <th scope="col">Segundo Apellido</th>
+                <th scope="col">Equipo</th>
+                <th scope="col">Dorsal</th>
+                <th scope="col">Fecha de nacimiento</th>
+                <th scope="col">Altura</th>
+                <th scope="col">Peso</th>
+                <th scope="col">Teléfono</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ jugador.id_jugador}}</td>
+                <td>{{ jugador.nombre }}</td>
+                <td>{{ jugador.apellido1 }} </td>
+                <td>{% if jugador.apellido2 %}{{jugador.apellido2}}{% else %} {% endif %} </td>
+                <td>{{ jugador.id_equipo.nombre }}</td>
+                <td>{{ jugador.dorsal}}</td>
+                <td>{{ jugador.fecha_nacimiento }}</td>
+                <td>{{ jugador.altura }}m</td>
+                <td>{{ jugador.peso }}kg</td>
+                <td>{{ jugador.telefono}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div> {% endcomment %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Detalle del Jugador</h5>
+            <div class="card-text">
+                <p><strong>ID:</strong> {{ jugador.id_jugador }}</p>
+                <p><strong>Nombre:</strong> {{ jugador.nombre }}</p>
+                <p><strong>Primer Apellido:</strong> {{ jugador.apellido1 }}</p>
+                <p><strong>Segundo Apellido:</strong> {% if jugador.apellido2 %}{{ jugador.apellido2 }}{% else %}-{% endif %}</p>
+                <p><strong>Equipo:</strong> {{ jugador.id_equipo.nombre }}</p>
+                <p><strong>Dorsal:</strong> {{ jugador.dorsal }}</p>
+                <p><strong>Fecha de nacimiento:</strong> {{ jugador.fecha_nacimiento }}</p>
+                <p><strong>Altura:</strong> {{ jugador.altura }}m</p>
+                <p><strong>Peso:</strong> {{ jugador.peso }}kg</p>
+                <p><strong>Teléfono:</strong> {{ jugador.telefono }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

@@ -6,7 +6,7 @@
 
 
 
-<div class="container">
+{% comment %} <div class="container">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -34,17 +34,33 @@
             </tr>
         </tbody>
     </table>
+</div> {% endcomment %}
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Detalle del Equipo</h5>
+            <div class="card-text">
+                <p><strong>ID:</strong> {{ equipo.id_equipo }}</p>
+                <p><strong>Equipo:</strong> {{ equipo.nombre }}</p>
+                <p><strong>Deporte:</strong> {{ equipo.id_deporte.nombre }}</p>
+                <p><strong>Equipación Principal:</strong> {{ equipo.equipacion_principal }}</p>
+                <p><strong>Equipación Suplente:</strong> {{ equipo.equipacion_suplente }}</p>
+                <p><strong>Contacto:</strong> {{ equipo.contacto }}</p>
+                <p><strong>Teléfono:</strong> {{ equipo.telefono }}</p>
+                <p><strong>Correo Electrónico:</strong> {{ equipo.email }}</p>
+            </div>
+        </div>
+    </div>
 </div>
 
+
 <div class="container">
-    <a class="btn btn-primary mb-3" href="{% url 'AppTorremolinos:crear_equipo' %}"> Añadir Nuevo Jugador </a>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">Dorsal</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellidos</th>
-                <th scope="col" colspan="2">Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -53,11 +69,12 @@
                 <td>{{ jugador.dorsal }}</td>
                 <td>{{ jugador.nombre }}</td>
                 <td>{{ jugador.apellido1 }} {% if jugador.apellido2 %}{{jugador.apellido2}}{% else %} {% endif %}</td>
-                <td></td>
+
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    <a class="btn btn-primary mb-3" href="{% url 'AppTorremolinos:crear_jugador_equipo' equipo.pk %}"> Añadir Nuevo Jugador </a>
 </div>
 
 

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block titulo %} App Torremolinos {% endblock %}
+{% block cuerpo %}
+{% load static %}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Detalle del Partido - {{ partido.id_partido }}</h1>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text"><strong>Deporte:</strong> {{ partido.id_deporte.nombre }}</p>
+            <p class="card-text"><strong>Fecha y Hora:</strong> {{ partido.fecha_hora }}</p>
+            <p class="card-text"><strong>Instalación:</strong> {% if partido.id_instalacion %}{{ partido.id_instalacion.nombre }}{% else %}No especificada{% endif %}</p>
+            <p class="card-text"><strong>Equipo Local:</strong> {{ partido.id_local.nombre }}</p>
+            <p class="card-text"><strong>Equipo Visitante:</strong> {{ partido.id_visitante.nombre }}</p>
+            <p class="card-text"><strong>Puntos Equipo Local:</strong> {{ partido.puntos_local }}</p>
+            <p class="card-text"><strong>Puntos Equipo Visitante:</strong> {{ partido.puntos_visitante }}</p>
+            <p class="card-text"><strong>Observaciones:</strong> {{ partido.observaciones }}</p>
+            <a href="{% url 'AppTorremolinos:listado_partidos' %}" class="btn btn-primary">Volver</a>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

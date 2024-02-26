@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block titulo %} App Torremolinos {% endblock %}
+{% block cuerpo %}
+{% load static %}
+
+
+
+
+
+<div class="container">
+    <a class="btn btn-primary mb-3" href="{% url 'AppTorremolinos:crear_partido' %}"> Añadir Partido </a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Fecha y Hora</th>
+                <th scope="col">Deporte</th>
+                <th scope="col">Equipo Local</th>
+                <th scope="col">Equipo Visitante</th>
+                <th scope="col">Resultado</th>
+                <th scope="col" colspan="2">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for partido in partidos  %}
+            <tr>
+                <td>{{ partido.fecha_hora }}</td>
+                <td>{{ partido.id_deporte.nombre }}</td>
+                <td>{{ partido.id_local.nombre }}</td>
+                <td>{{ partido.id_visitante.nombre}}</td>
+                <td>{{ partido.puntos_local }} - {{partido.puntos_visitante}}</td>
+                
+                <td><a class="btn btn-warning" href="{% url 'AppTorremolinos:actualizar_partido' pk=partido.id_partido %}">Actualizar</a></td>
+                <td><a class="btn btn-info" href="{% url 'AppTorremolinos:detalle_partido' pk=partido.id_partido %}">Detalle</a></td>
+                <td><a class="btn btn-danger" href="{% url 'AppTorremolinos:borrar_partido' pk=partido.id_partido %}">Borrar</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock %}

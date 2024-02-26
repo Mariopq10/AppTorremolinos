@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block titulo %} App Torremolinos {% endblock %}
+{% block cuerpo %}
+{% load static %}
+
+
+
+
+
+<div class="container">
+    <a class="btn btn-primary mb-3" href="{% url 'AppTorremolinos:crear_jugador' %}"> Añadir Nuevo Jugador </a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Primer Apellido</th>
+                <th scope="col">Segundo Apellido</th>
+                <th scope="col">Equipo</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col" colspan="2">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for jugador in jugadores  %}
+            <tr>
+                <td>{{ jugador.nombre }}</td>
+                <td>{{ jugador.apellido1 }} </td>
+                <td>{% if jugador.apellido2 %}{{jugador.apellido2}}{% else %} {% endif %} </td>
+                <td>{{ jugador.id_equipo.nombre }}</td>
+                <td>{{ jugador.telefono }}</td>
+                
+                <td><a class="btn btn-warning" href="{% url 'AppTorremolinos:actualizar_jugador' pk=jugador.id_jugador %}">Actualizar</a></td>
+                <td><a class="btn btn-info" href="{% url 'AppTorremolinos:detalle_jugador' pk=jugador.id_jugador %}">Detalle</a></td>
+                <td><a class="btn btn-danger" href="{% url 'AppTorremolinos:borrar_jugador' pk=jugador.id_jugador %}">Borrar</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock %}
