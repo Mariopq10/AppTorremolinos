@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block titulo %} App Torremolinos {% endblock %}
+{% block cuerpo %}
+{% load static %}
+
+
+
+<table>
+    <a href="{% url 'AppTorremolinos:crear_deporte' %}"> Añadir </a>
+    <tr>
+      <th>ID</th>
+      <th>Deporte</th>
+      <th colspan="3">Options</th>
+    </tr>
+    
+    <!-- Inicio del bucle for -->
+    {% for deporte in listado_deportes %}
+    <tr>
+      <td>{{deporte.id}}</td>
+      <td>{{deporte.nombre}}</td>
+      
+      {% comment %} <td><a href="{% url 'AppTorremolinos:detalle_deporte' pk=deporte.id %}">Detalle</a></td> {% endcomment %}
+      <td><a href="{% url 'AppTorremolinos:actualizar_deporte' pk=deporte.id %}">Actualizar</a></td>
+      <td><a href="{% url 'AppTorremolinos:borrar_deporte' pk=deporte.id %}">Borrar</a></td>
+    </tr>
+    <!-- Fin del bucle for -->
+    {% endfor %}
+  </table>
+
+
+
+
+{% endblock %}

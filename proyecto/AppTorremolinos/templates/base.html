@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block titulo %}{% endblock %}</title>
+    {% load static %}
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 175px;
+            height: 100%;
+            background-color: #343a40;
+            padding-top: 20px;
+            overflow-y: auto; /* Agrega desplazamiento vertical */
+        }
+
+        .sidebar-title {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-menu {
+            list-style-type: none;
+            padding-left: 0;
+            text-align:center
+        }
+
+        .sidebar-menu-item {
+            margin-bottom: 10px;
+        }
+
+        .sidebar-menu-link {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar-menu-link:hover {
+            background-color: #495057;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                margin-left: 0; /* Si la pantalla es lo suficientemente pequeña, elimina el margen izquierdo */
+            }
+        }
+      
+    </style>  
+</head>
+
+<body>
+    <div class="sidebar">
+        <h3 class="sidebar-title"> Torremolinos </h3>
+        <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+                <a class="sidebar-menu-link" href="{% url 'AppTorremolinos:PaginaInicio' %}">Inicio</a>
+            </li>
+            <li class="sidebar-menu-item">
+                <a class="sidebar-menu-link" href="{% url 'AppTorremolinos:listado_deportes' %}">Deportes</a>
+            </li>
+            <li class="sidebar-menu-item">
+                <a class="sidebar-menu-link" href="{% url 'AppTorremolinos:listado_instalaciones' %}">Instalaciones</a>
+            </li>
+            <li class="sidebar-menu-item">
+                <a class="sidebar-menu-link" href="{% url 'AppTorremolinos:listado_equipos' %}">Equipos</a>
+            </li>
+            <li class="sidebar-menu-item">
+                <a class="sidebar-menu-link" href="{% url 'AppTorremolinos:listado_jugadores' %}">Jugadores</a>
+            </li>
+            <li class="sidebar-menu-item">
+                <a class="sidebar-menu-link" href="{% url 'AppTorremolinos:listado_partidos' %}">Partidos</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content">
+        {% block cuerpo %}{% endblock %}
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">© Mario Pérez Quintero - App Torremolinos.</span>
+        </div>
+    </footer>
+</body>
+
+</html>

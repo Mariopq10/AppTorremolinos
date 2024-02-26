@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block titulo %} App Torremolinos {% endblock %}
+{% block cuerpo %}
+{% load static %}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Bienvenido a AppTorremolinos</h1>
+    </div>
+
+    <!-- Imagen de deporte -->
+    <img src="{% static 'portada.jpg' %}" class="img-fluid rounded mx-auto d-block" alt="Imagen de deporte">
+
+    <!-- Últimos cinco partidos jugados -->
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Últimos partidos jugados</h2>
+            <ul class="list-group">
+                {% for partido in ultimos_partidos_jugados %}
+                <li class="list-group-item">{{ partido.id_local }} vs {{ partido.id_visitante }}</li>
+                {% empty %}
+                <li class="list-group-item">No hay partidos jugados recientes</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Próximos cinco partidos por jugar -->
+        <div class="col-md-6">
+            <h2>Próximos partidos</h2>
+            <ul class="list-group">
+                {% for partido in proximos_partidos %}
+                <li class="list-group-item">{{ partido.id_local }} vs {{ partido.id_visitante }}</li>
+                {% empty %}
+                <li class="list-group-item">No hay próximos partidos programados</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
