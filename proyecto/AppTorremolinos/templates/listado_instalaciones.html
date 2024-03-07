@@ -1,40 +1,8 @@
 {% extends "base.html" %}
-{% block titulo %} App Torremolinos {% endblock %}
+{% block titulo %} Instalaciones {% endblock %}
 {% block cuerpo %}
 {% load static %}
 
-
-
-{% comment %} <div class="container">
-    <a class="btn btn-primary mb-3" href="{% url 'AppTorremolinos:crear_instalaciones' %}"> Añadir Instalación </a>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Instalación</th>
-                <th scope="col">Dirección</th>
-                <th scope="col">Iluminación</th>
-                <th scope="col">Cubierta</th>
-                <th scope="col" colspan="2">Opciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Inicio del bucle for -->
-            {% for instalacion in listado_instalaciones %}
-            <tr>
-                <td>{{instalacion.id_instalacion}}</td>
-                <td>{{instalacion.nombre}}</td>
-                <td>{{instalacion.direccion}}</td>
-                <td>{% if instalacion.iluminacion %}Sí{% else %}No{% endif %}</td>
-                <td>{% if instalacion.cubierta %}Sí{% else %}No{% endif %}</td>
-                <td><a class="btn btn-warning" href="{% url 'AppTorremolinos:actualizar_instalaciones' pk=instalacion.id_instalacion %}">Actualizar</a></td>
-                <td><a class="btn btn-danger" href="{% url 'AppTorremolinos:borrar_instalaciones' pk=instalacion.id_instalacion %}">Borrar</a></td>
-            </tr>
-            <!-- Fin del bucle for -->
-            {% endfor %}
-        </tbody>
-    </table>
-</div> {% endcomment %}
 
 <div class="container">
     <a class="btn btn-primary mb-3" href="{% url 'AppTorremolinos:crear_instalaciones' %}"> Añadir Instalación </a>
