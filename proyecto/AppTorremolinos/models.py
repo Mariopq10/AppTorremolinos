@@ -1,8 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-# Create your models here.
-
 class Deporte(models.Model):
     id_deporte = models.IntegerField(primary_key = True)
     nombre = models.CharField(max_length = 20)  
@@ -31,7 +29,7 @@ class Instalacion(models.Model):
 class Equipo(models.Model):
     id_equipo = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=20, unique=True)
-    id_deporte = models.ForeignKey('Deporte', on_delete=models.RESTRICT, db_column='id_deporte')
+    id_deporte = models.ForeignKey(Deporte,models.DO_NOTHING, db_column='id_deporte')
     equipacion_principal = models.CharField(max_length=100)
     equipacion_suplente = models.CharField(max_length=100)
     contacto = models.CharField(max_length=100)
@@ -39,6 +37,7 @@ class Equipo(models.Model):
     email = models.EmailField()
     class Meta:
         verbose_name_plural = "Equipos"
+        verbose_name="Equipo"
         db_table = "equipos"
     def __str__(self):
         return f"{self.id_equipo} {self.nombre}"  

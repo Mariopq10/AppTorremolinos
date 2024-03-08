@@ -1,7 +1,7 @@
 from django.contrib import admin
 from . import models
 
-# Register your models here.
+
 class DeporteAdmin(admin.ModelAdmin):
     list_display = ["id_deporte", "nombre"]
     search_fields = ["nombre"]

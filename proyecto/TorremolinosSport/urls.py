@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# Tuve que comentar el segundo path para poder crear las tablas de la base de datos.
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('AppTorremolinos/', include("AppTorremolinos.urls", namespace= 'AppTorremolinos')),

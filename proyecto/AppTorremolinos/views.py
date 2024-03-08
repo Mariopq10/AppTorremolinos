@@ -6,9 +6,8 @@ from . import models
 from django.views import generic
 from django.utils import timezone
 
-# Create your views here.
-
 # Pagina Inicio/ Vista principal
+
 class PaginaInicio(generic.ListView): 
     model = models.Deporte
     template_name = "inicio.html"
@@ -23,7 +22,7 @@ class PaginaInicio(generic.ListView):
         return context
 
 
-# Vistas modelo Deporte.
+# Vistas modelo Deporte
 
 class DeporteListView(generic.ListView):
     model = models.Deporte
@@ -51,7 +50,8 @@ class DeporteUpdateView(generic.UpdateView):
     success_url = reverse_lazy('AppTorremolinos:listado_deportes') 
 
 
-# Vistas modelo Instalacion.
+# Vistas modelo Instalacion
+    
 class InstalacionesListView(generic.ListView):
     template_name = 'listado_instalaciones.html'
     context_object_name = 'listado_instalaciones'
@@ -76,7 +76,7 @@ class InstalacionesUpdateView(generic.UpdateView):
     success_url = reverse_lazy('AppTorremolinos:listado_instalaciones')
 
 
-# Vistas del modelo Equipo.
+# Vistas del modelo Equipo
 
 class EquipoListView(generic.ListView):
     template_name = 'listado_equipos.html'
@@ -132,7 +132,8 @@ class EquipoJugadorCreate(generic.CreateView):
         return initial
 
 
-# Vistas del modelo Jugador.
+# Vistas del modelo Jugador
+    
 class JugadorListView(generic.ListView):
     model = models.Jugador
     template_name = 'listado_jugadores.html'
@@ -169,7 +170,8 @@ class JugadorDeleteView(generic.DeleteView):
     template_name = 'borrar_jugador.html'
 
 
-# Vistas del modelo Partido.
+# Vistas del modelo Partido
+    
 class PartidoListView(generic.ListView):
     model = models.Partido
     template_name = 'listado_partidos.html'
